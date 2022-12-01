@@ -9,9 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class WebTest {
     private WebDriver driver;
-    ChromeOptions options = new ChromeOptions();
+
 
 
     @BeforeAll
@@ -20,10 +21,12 @@ public class WebTest {
     }
     @BeforeEach
     void setUp() {
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999/");
     }
 
     @AfterEach
@@ -59,6 +62,5 @@ public class WebTest {
 
         assertEquals(expected, actual);
     }
-
 
 }
